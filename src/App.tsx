@@ -5,6 +5,7 @@ import emaildarkIcon from "./assets/emaildark.svg";
 import arrowIcon from "./assets/arrow.svg";
 import phoneIcon from "./assets/phone.svg";
 import locationIcon from "./assets/location.svg";
+import cvIcon from "./assets/cv.svg";
 import "./App.css";
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
             </p>
             <div className="flex justify-center items-center mt-5">
               {IconButton(githubIcon, "https://github.com/Aarass")}{" "}
+              {IconButton(cvIcon, "mailto:prokopovic75@gmail.com")}
               {IconButton(emailIcon, "mailto:prokopovic75@gmail.com")}
             </div>
           </div>
