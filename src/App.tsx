@@ -1,7 +1,10 @@
 import avatar from "./assets/images/avatar.jpg";
 import githubIcon from "./assets/github.svg";
 import emailIcon from "./assets/email.svg";
+import emaildarkIcon from "./assets/emaildark.svg";
 import arrowIcon from "./assets/arrow.svg";
+import phoneIcon from "./assets/phone.svg";
+import locationIcon from "./assets/location.svg";
 import "./App.css";
 
 function App() {
@@ -67,20 +70,44 @@ function App() {
           }}
         ></img>
       </div>
+
+      <footer className="bg-(--lightgray) lg:px-[25%] ">
+        <div className="p-3 py-5 ">
+          <div className="flex flex-col items-end ">
+            {FooterEntry(phoneIcon, "+381 62 1715606")}
+            {FooterEntry(emaildarkIcon, "prokopovic75@gmail.com")}
+            {FooterEntry(locationIcon, "Serbia, Leskovac")}
+          </div>
+        </div>
+      </footer>
+      <div className="bg-(--darkgray) text-(--lightgray) text-center">
+        © 2025 Aleksandar Prokopović. All rights reserved.
+      </div>
     </>
   );
 }
 
-function IconButton(src: string, link: string) {
+function IconButton(icon: string, link: string) {
   return (
     <a
       href={link}
       className="w-10 aspect-square rounded-full border  border-(--lightgray) flex justify-center items-center mx-2"
     >
       <div className="w-3/5 ">
-        <img src={src}></img>
+        <img src={icon}></img>
       </div>
     </a>
+  );
+}
+
+function FooterEntry(icon: string, text: string) {
+  return (
+    <div className="flex items-center justify-center">
+      <p className="text-(--darkgray) m-0 uppercase text-xs tracking-tighter leading-6">
+        {text}
+      </p>
+      <img src={icon} className="w-5 ml-1"></img>
+    </div>
   );
 }
 
