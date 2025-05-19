@@ -1,35 +1,86 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import avatar from "./assets/images/avatar.jpg";
+import githubIcon from "./assets/github.svg";
+import emailIcon from "./assets/email.svg";
+import arrowIcon from "./assets/arrow.svg";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
-      <div>
-        <h1 className="text-3xl font-bold underline"> Hello world! </h1>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <header className="">
+        <div className="w-full flex flex-col justify-center items-center">
+          <hr className="my-10 w-1/2 border-(--lightgray)" />
+
+          <div className="flex flex-col justify-center items-center">
+            <img src={avatar} className="w-50 rounded-full"></img>
+            <h1
+              className="m-4 text-(--darkgray)"
+              style={{
+                textTransform: "uppercase",
+                textAlign: "center",
+                fontFamily: `"Source Code Pro", monospace`,
+                fontOpticalSizing: "auto",
+                fontStyle: "normal",
+                letterSpacing: "0.4rem",
+                fontSize: "1.5em",
+                lineHeight: "1.25",
+                fontWeight: "400",
+              }}
+            >
+              Aleksandar Prokopović
+            </h1>
+            <hr className="my-0 w-10 border-(--lightgray)" />
+            <p
+              className="m-4 text-(--darkgray)"
+              style={{
+                textTransform: "uppercase",
+                fontFamily: `"Source Code Pro", monospace`,
+                fontOpticalSizing: "auto",
+                fontStyle: "normal",
+                letterSpacing: "0.1em",
+                fontSize: "0.75em",
+                lineHeight: "1.25",
+                fontWeight: "400",
+              }}
+            >
+              Full-Stack Overthinker
+            </p>
+            <div className="flex justify-center items-center mt-5">
+              {IconButton(githubIcon, "https://github.com/Aarass")}{" "}
+              {IconButton(emailIcon, "mailto:prokopovic75@gmail.com")}
+            </div>
+          </div>
+          <hr className="my-10 w-1/2 border-(--lightgray)" />
+        </div>
+      </header>
+      <div className="scroll mx-auto w-8">
+        <img
+          src={arrowIcon}
+          className="animate-pulse"
+          style={{ animationDelay: "0ms" }}
+        ></img>
+        <img
+          src={arrowIcon}
+          className="animate-pulse -translate-y-3"
+          style={{
+            animationDelay: "500ms",
+          }}
+        ></img>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
+  );
+}
+
+function IconButton(src: string, link: string) {
+  return (
+    <a
+      href={link}
+      className="w-10 aspect-square rounded-full border  border-(--lightgray) flex justify-center items-center mx-2"
+    >
+      <div className="w-3/5 ">
+        <img src={src}></img>
+      </div>
+    </a>
   );
 }
 
