@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import "./App.css";
 import arrowIcon from "./assets/arrow.svg";
 import cvIcon from "./assets/cv.svg";
 import emailIcon from "./assets/email.svg";
@@ -10,6 +9,7 @@ import clweImage from "./assets/images/CLWE.png";
 import locationIcon from "./assets/location.svg";
 import phoneIcon from "./assets/phone.svg";
 import closeIcon from "./assets/close.svg";
+import { ClweDetails } from "./details/clwe.tsx";
 
 function App() {
   const [overlayChild, setOverlayChild] = useState<ReactNode>(null);
@@ -90,9 +90,7 @@ function App() {
           name="Can't live without electricity"
           passChildren={setOverlayChild}
         >
-          <div>
-            <p>1</p>
-          </div>
+          <ClweDetails />
         </ProjectDisplay>
       </DisplaySection>
 
@@ -173,8 +171,8 @@ function Overlay({ children }: { children: ReactNode | null }) {
       ref={dialogRef}
       className="max-w-screen max-h-svh w-full h-full p-10 bg-transparent"
     >
-      <div className="bg-white w-full lg:w-1/2 h-full rounded-2xl p-3 m-auto overflow-hidden">
-        <div className="flex justify-end">
+      <div className="bg-white w-full lg:w-1/2 h-full rounded-2xl p-3 m-auto overflow-hidden ">
+        <div className="flex justify-end ">
           <button
             ref={closeButton}
             className="rounded-full p-1 ml-auto cursor-pointer"
@@ -182,7 +180,7 @@ function Overlay({ children }: { children: ReactNode | null }) {
             <img src={closeIcon} className="w-6 aspect-square" />
           </button>
         </div>
-        <div className="h-full overflow-scroll">{children}</div>
+        <div className="h-full overflow-scroll dialog-bg ">{children}</div>
       </div>
     </dialog>
   );
@@ -238,10 +236,11 @@ function IconButton({ src, href }: { src: string; href: string }) {
   return (
     <a
       href={href}
-      className="w-10 aspect-square rounded-full border  border-(--lightgray) flex justify-center items-center mx-2"
+      target="_blank"
+      className="w-10 aspect-square rounded-full border  border-(--lightgray) flex justify-center items-center mx-2 hover:brightness-75 transition-all"
     >
       <div className="w-3/5 ">
-        <img src={src}></img>
+        <img src={src} className=""></img>
       </div>
     </a>
   );
@@ -251,7 +250,7 @@ function FooterEntry(icon: string, text: string) {
   return (
     <div className="flex items-center justify-center">
       <img src={icon} className="w-5 mr-1"></img>
-      <p className="text-(--darkgray) m-0 uppercase text-xs tracking-tighter leading-6">
+      <p className="text-(--darkgray) m-0 uppercase font-[300] text-xs tracking-tighter leading-6">
         {text}
       </p>
     </div>
