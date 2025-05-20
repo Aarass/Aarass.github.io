@@ -6,7 +6,9 @@ import arrowIcon from "./assets/arrow.svg";
 import phoneIcon from "./assets/phone.svg";
 import locationIcon from "./assets/location.svg";
 import cvIcon from "./assets/cv.svg";
+import clweImage from "./assets/images/CLWE.png";
 import "./App.css";
+import { Children, type ReactNode } from "react";
 
 function App() {
   return (
@@ -50,15 +52,19 @@ function App() {
               Full-Stack Overthinker
             </p>
             <div className="flex justify-center items-center mt-5">
-              {IconButton(githubIcon, "https://github.com/Aarass")}{" "}
-              {IconButton(cvIcon, "mailto:prokopovic75@gmail.com")}
-              {IconButton(emailIcon, "mailto:prokopovic75@gmail.com")}
+              <IconButton src={githubIcon} href="https://github.com/Aarass" />
+              <IconButton src={cvIcon} href="mailto:prokopovic75@gmail.com" />
+              <IconButton
+                src={emailIcon}
+                href="mailto:prokopovic75@gmail.com"
+              />
             </div>
           </div>
           <hr className="my-10 w-1/2 border-(--lightgray)" />
         </div>
       </header>
-      <div className="scroll mx-auto w-8">
+
+      <div className="mx-auto w-8 mb-10">
         <img
           src={arrowIcon}
           className="animate-pulse"
@@ -73,6 +79,18 @@ function App() {
         ></img>
       </div>
 
+      <DisplaySection heading="💎 My Finest Work">
+        <ProjectDisplay src={clweImage} name="Can't live without electricity" />
+      </DisplaySection>
+
+      <DisplaySection heading="🚧 Under Construction">
+        <ProjectDisplay src={clweImage} name="Can't live without electricity" />
+      </DisplaySection>
+
+      <DisplaySection heading="🌱 My roots">
+        <ProjectDisplay src={clweImage} name="Can't live without electricity" />
+      </DisplaySection>
+
       <footer className="lg:px-[25%] flex flex-col items-center">
         <hr className="my-10 w-1/2 border-(--lightgray)" />
         <div className="">
@@ -86,27 +104,45 @@ function App() {
   );
 }
 
-// <footer className="bg-(--lightgray) lg:px-[25%] ">
-//   <div className="p-3 py-5 ">
-//     <div className="flex flex-col items-end ">
-//       {FooterEntry(phoneIcon, "+381 62 1715606")}
-//       {FooterEntry(emaildarkIcon, "prokopovic75@gmail.com")}
-//       {FooterEntry(locationIcon, "Serbia, Leskovac")}
-//     </div>
-//   </div>
-// </footer>
-// <div className="bg-(--darkgray) text-(--lightgray) text-center">
-//   © 2025 Aleksandar Prokopović. All rights reserved.
-// </div>
-//
-function IconButton(icon: string, link: string) {
+function DisplaySection({
+  heading,
+  children,
+}: {
+  heading: string;
+  children: ReactNode;
+}) {
+  return (
+    <section className="mb-20 flex flex-col items-center">
+      <div className="text-(--darkgray) ">
+        <p className="font-light text-xl">{heading}</p>
+        <div>
+          <hr className="mb-5 mt-2 w-1/8 border-(--lightgray)" />
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 auto-cols-min gap-4 w-[fit-content] ">
+          {children}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ProjectDisplay({ src, name }: { src: string; name: string }) {
+  return (
+    <div className="p-3 shadow-sm rounded-2xl cursor-pointer">
+      <img src={src} className="w-2xs rounded-md"></img>
+      <h1 className="font-light text-sm text-center mt-2">{name}</h1>
+    </div>
+  );
+}
+
+function IconButton({ src, href }: { src: string; href: string }) {
   return (
     <a
-      href={link}
+      href={href}
       className="w-10 aspect-square rounded-full border  border-(--lightgray) flex justify-center items-center mx-2"
     >
       <div className="w-3/5 ">
-        <img src={icon}></img>
+        <img src={src}></img>
       </div>
     </a>
   );
