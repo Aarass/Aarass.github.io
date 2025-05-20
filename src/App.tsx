@@ -73,22 +73,32 @@ function App() {
         ></img>
       </div>
 
-      <footer className="bg-(--lightgray) lg:px-[25%] ">
-        <div className="p-3 py-5 ">
-          <div className="flex flex-col items-end ">
-            {FooterEntry(phoneIcon, "+381 62 1715606")}
-            {FooterEntry(emaildarkIcon, "prokopovic75@gmail.com")}
-            {FooterEntry(locationIcon, "Serbia, Leskovac")}
-          </div>
+      <footer className="lg:px-[25%] flex flex-col items-center">
+        <hr className="my-10 w-1/2 border-(--lightgray)" />
+        <div className="">
+          {FooterEntry(locationIcon, "Serbia, Leskovac")}
+          {FooterEntry(phoneIcon, "+381 62 1715606")}
+          {FooterEntry(emaildarkIcon, "prokopovic75@gmail.com")}
         </div>
+        <hr className="my-10 w-1/2 border-(--lightgray)" />
       </footer>
-      <div className="bg-(--darkgray) text-(--lightgray) text-center">
-        © 2025 Aleksandar Prokopović. All rights reserved.
-      </div>
     </>
   );
 }
 
+// <footer className="bg-(--lightgray) lg:px-[25%] ">
+//   <div className="p-3 py-5 ">
+//     <div className="flex flex-col items-end ">
+//       {FooterEntry(phoneIcon, "+381 62 1715606")}
+//       {FooterEntry(emaildarkIcon, "prokopovic75@gmail.com")}
+//       {FooterEntry(locationIcon, "Serbia, Leskovac")}
+//     </div>
+//   </div>
+// </footer>
+// <div className="bg-(--darkgray) text-(--lightgray) text-center">
+//   © 2025 Aleksandar Prokopović. All rights reserved.
+// </div>
+//
 function IconButton(icon: string, link: string) {
   return (
     <a
@@ -105,10 +115,10 @@ function IconButton(icon: string, link: string) {
 function FooterEntry(icon: string, text: string) {
   return (
     <div className="flex items-center justify-center">
+      <img src={icon} className="w-5 mr-1"></img>
       <p className="text-(--darkgray) m-0 uppercase text-xs tracking-tighter leading-6">
         {text}
       </p>
-      <img src={icon} className="w-5 ml-1"></img>
     </div>
   );
 }
