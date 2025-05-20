@@ -1,18 +1,23 @@
-import avatar from "./assets/images/avatar.jpg";
-import githubIcon from "./assets/github.svg";
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import "./App.css";
+import arrowIcon from "./assets/arrow.svg";
+import cvIcon from "./assets/cv.svg";
 import emailIcon from "./assets/email.svg";
 import emaildarkIcon from "./assets/emaildark.svg";
-import arrowIcon from "./assets/arrow.svg";
-import phoneIcon from "./assets/phone.svg";
-import locationIcon from "./assets/location.svg";
-import cvIcon from "./assets/cv.svg";
+import githubIcon from "./assets/github.svg";
+import avatar from "./assets/images/avatar.jpg";
 import clweImage from "./assets/images/CLWE.png";
-import "./App.css";
-import { Children, type ReactNode } from "react";
+import locationIcon from "./assets/location.svg";
+import phoneIcon from "./assets/phone.svg";
+import closeIcon from "./assets/close.svg";
 
 function App() {
+  const [overlayChild, setOverlayChild] = useState<ReactNode>(null);
+
   return (
     <>
+      <Overlay>{overlayChild}</Overlay>
+
       <header className="">
         <div className="w-full flex flex-col justify-center items-center">
           <hr className="my-10 w-1/2 border-(--lightgray)" />
@@ -80,15 +85,39 @@ function App() {
       </div>
 
       <DisplaySection heading="💎 My Finest Work">
-        <ProjectDisplay src={clweImage} name="Can't live without electricity" />
+        <ProjectDisplay
+          src={clweImage}
+          name="Can't live without electricity"
+          passChildren={setOverlayChild}
+        >
+          <div>
+            <p>1</p>
+          </div>
+        </ProjectDisplay>
       </DisplaySection>
 
       <DisplaySection heading="🚧 Under Construction">
-        <ProjectDisplay src={clweImage} name="Can't live without electricity" />
+        <ProjectDisplay
+          src={clweImage}
+          name="Can't live without electricity"
+          passChildren={setOverlayChild}
+        >
+          <div>
+            <p>2</p>
+          </div>
+        </ProjectDisplay>
       </DisplaySection>
 
       <DisplaySection heading="🌱 My roots">
-        <ProjectDisplay src={clweImage} name="Can't live without electricity" />
+        <ProjectDisplay
+          src={clweImage}
+          name="Can't live without electricity"
+          passChildren={setOverlayChild}
+        >
+          <div>
+            <p>3</p>
+          </div>
+        </ProjectDisplay>
       </DisplaySection>
 
       <footer className="lg:px-[25%] flex flex-col items-center">
@@ -101,6 +130,61 @@ function App() {
         <hr className="my-10 w-1/2 border-(--lightgray)" />
       </footer>
     </>
+  );
+}
+
+function Overlay({ children }: { children: ReactNode | null }) {
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const closeButton = useRef<HTMLButtonElement>(null);
+
+  const open = () => {
+    console.log(dialogRef.current);
+    dialogRef.current?.showModal();
+    closeButton.current?.blur();
+  };
+
+  const close = () => {
+    dialogRef.current?.close();
+  };
+
+  const backdrop = (ev: MouseEvent) => {
+    if (dialogRef.current === null) return;
+
+    if (dialogRef.current === ev.target) {
+      dialogRef.current.close();
+    }
+  };
+
+  useEffect(() => {
+    if (children === null) return;
+
+    open();
+    closeButton.current?.addEventListener("click", close);
+    dialogRef.current?.addEventListener("click", backdrop);
+
+    return () => {
+      closeButton.current?.removeEventListener("click", close);
+      dialogRef.current?.removeEventListener("click", backdrop);
+    };
+  });
+
+  return (
+    <dialog
+      ref={dialogRef}
+      className="max-w-screen max-h-screen w-full h-full p-10 bg-transparent"
+    >
+      <div className="bg-white w-1/2 h-full rounded-2xl p-3 m-auto">
+        <div className="flex justify-end">
+          <button
+            ref={closeButton}
+            className="rounded-full p-1 ml-auto cursor-pointer"
+          >
+            <img src={closeIcon} className="w-6 aspect-square" />
+          </button>
+        </div>
+        {children}
+      </div>
+    </dialog>
   );
 }
 
@@ -126,9 +210,24 @@ function DisplaySection({
   );
 }
 
-function ProjectDisplay({ src, name }: { src: string; name: string }) {
+function ProjectDisplay({
+  src,
+  name,
+  children,
+  passChildren,
+}: {
+  src: string;
+  name: string;
+  children: ReactNode;
+  passChildren: Function;
+}) {
   return (
-    <div className="p-3 shadow-sm rounded-2xl cursor-pointer">
+    <div
+      className="p-3 shadow-sm rounded-2xl cursor-pointer"
+      onClick={() => {
+        passChildren(children);
+      }}
+    >
       <img src={src} className="w-2xs rounded-md"></img>
       <h1 className="font-light text-sm text-center mt-2">{name}</h1>
     </div>
