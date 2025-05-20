@@ -171,9 +171,9 @@ function Overlay({ children }: { children: ReactNode | null }) {
   return (
     <dialog
       ref={dialogRef}
-      className="max-w-screen max-h-screen w-full h-full p-10 bg-transparent"
+      className="max-w-screen max-h-svh w-full h-full p-10 bg-transparent"
     >
-      <div className="bg-white w-1/2 h-full rounded-2xl p-3 m-auto">
+      <div className="bg-white w-full lg:w-1/2 h-full rounded-2xl p-3 m-auto overflow-hidden">
         <div className="flex justify-end">
           <button
             ref={closeButton}
@@ -182,7 +182,7 @@ function Overlay({ children }: { children: ReactNode | null }) {
             <img src={closeIcon} className="w-6 aspect-square" />
           </button>
         </div>
-        {children}
+        <div className="h-full overflow-scroll">{children}</div>
       </div>
     </dialog>
   );
@@ -223,7 +223,7 @@ function ProjectDisplay({
 }) {
   return (
     <div
-      className="p-3 shadow-sm rounded-2xl cursor-pointer"
+      className="p-3 shadow-sm rounded-2xl cursor-pointer hover:scale-105 transition-all"
       onClick={() => {
         passChildren(children);
       }}
