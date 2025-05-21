@@ -6,10 +6,12 @@ import emaildarkIcon from "./assets/emaildark.svg";
 import githubIcon from "./assets/github.svg";
 import avatar from "./assets/images/avatar.jpg";
 import clweImage from "./assets/images/CLWE.png";
+import rmasImage from "./assets/images/rmas/banner.jpg";
 import locationIcon from "./assets/location.svg";
 import phoneIcon from "./assets/phone.svg";
 import closeIcon from "./assets/close.svg";
 import { ClweDetails } from "./details/clwe.tsx";
+import { RmasDetails } from "./details/rmas.tsx";
 
 function App() {
   const [overlayChild, setOverlayChild] = useState<ReactNode>(null);
@@ -85,6 +87,14 @@ function App() {
       </div>
 
       <DisplaySection heading="💎 My Finest Work">
+        <ProjectDisplay
+          src={rmasImage}
+          name="SeekOut"
+          passChildren={setOverlayChild}
+        >
+          <RmasDetails />
+        </ProjectDisplay>
+
         <ProjectDisplay
           src={clweImage}
           name="Can't live without electricity"
@@ -169,10 +179,10 @@ function Overlay({ children }: { children: ReactNode | null }) {
   return (
     <dialog
       ref={dialogRef}
-      className="max-w-screen max-h-svh w-full h-full p-10 bg-transparent"
+      className="max-w-screen max-h-svh w-full h-full lg:p-10 bg-transparent"
     >
-      <div className="bg-white w-full lg:w-1/2 h-full rounded-2xl p-3 m-auto overflow-hidden ">
-        <div className="flex justify-end ">
+      <div className="flex flex-col bg-white w-full lg:w-2/3 2xl:w-1/2 h-full lg:rounded-2xl p-3 m-auto overflow-hidden ">
+        <div className="flex justify-end pb-3">
           <button
             ref={closeButton}
             className="rounded-full p-1 ml-auto cursor-pointer"
@@ -180,7 +190,7 @@ function Overlay({ children }: { children: ReactNode | null }) {
             <img src={closeIcon} className="w-6 aspect-square" />
           </button>
         </div>
-        <div className="h-full overflow-scroll dialog-bg ">{children}</div>
+        <div className="flex-1 overflow-scroll dialog-bg">{children}</div>
       </div>
     </dialog>
   );
