@@ -179,7 +179,7 @@ function Overlay({ children }: { children: ReactNode | null }) {
   return (
     <dialog
       ref={dialogRef}
-      className="max-w-screen max-h-svh w-full h-full lg:p-10 bg-transparent"
+      className="max-w-screen max-h-svh w-full h-dvh lg:p-10 bg-transparent"
     >
       <div className="flex flex-col bg-white w-full lg:w-2/3 2xl:w-1/2 h-full lg:rounded-2xl p-3 m-auto overflow-hidden ">
         <div className="flex justify-end pb-3">
