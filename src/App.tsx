@@ -5,7 +5,7 @@ import emailIcon from "./assets/email.svg";
 import emaildarkIcon from "./assets/emaildark.svg";
 import githubIcon from "./assets/github.svg";
 import avatar from "./assets/images/avatar.jpg";
-import clweImage from "./assets/images/CLWE.png";
+import clweImage from "./assets/images/clwe/cat.jpg";
 import rmasImage from "./assets/images/rmas/banner.jpg";
 import locationIcon from "./assets/location.svg";
 import phoneIcon from "./assets/phone.svg";
@@ -179,7 +179,7 @@ function Overlay({ children }: { children: ReactNode | null }) {
   return (
     <dialog
       ref={dialogRef}
-      className="max-w-screen max-h-svh w-full h-dvh lg:p-10 bg-transparent"
+      className="max-w-screen max-h-lvh w-full h-dvh lg:p-10 bg-transparent"
     >
       <div className="flex flex-col bg-white w-full lg:w-2/3 2xl:w-1/2 h-full lg:rounded-2xl p-3 m-auto overflow-hidden ">
         <div className="flex justify-end pb-3">

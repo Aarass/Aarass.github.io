@@ -1,6 +1,6 @@
+import { FullscreenablePicture } from "../components/picture";
+import catImage from "../assets/images/clwe/cat.jpg";
+
 export function ClweDetails() {
-  const arr = [];
-  for (let i = 0; i < 100; i++)
-    arr.push(<p className="ml-2">Hellow from clwe details</p>);
-  return arr;
+  return <FullscreenablePicture src={catImage} className="" />;
 }

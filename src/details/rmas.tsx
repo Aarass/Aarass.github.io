@@ -4,6 +4,7 @@ import banner from "../assets/images/rmas/banner.jpg";
 import leaderboard from "../assets/images/rmas/leaderboard.png";
 import githubIcon from "../assets/github.svg";
 import { RepositoryButton } from "../components/repositoryButton";
+import { FullscreenablePicture } from "../components/picture";
 // "Share Tech Mono"
 // font-[Architects_Daughter]
 export function RmasDetails() {
@@ -40,18 +41,17 @@ export function RmasDetails() {
           Here’s the leaderboard, where you’ll find an entry from the assistant
           who went over my work
         </p>
-        <img
-          width="178"
-          height="357"
+
+        <FullscreenablePicture
           src={leaderboard}
-          className="rounded-2xl mx-auto shadow-sm"
+          className="rounded-2xl mx-auto shadow-sm w-[178px] h-[357px]"
+          portrait={true}
         />
       </section>
 
       <section className="flex flex-wrap justify-center my-4 technologies">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kotlin/kotlin-original.svg" />
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/android/android-plain-wordmark.svg" />
-
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/androidstudio/androidstudio-original.svg" />
       </section>
 
