@@ -13,6 +13,7 @@
 :root {
   --lightgray: #cccccc;
   --darkgray: #474747;
+  --tscount: 5;
 }
 
 html {
@@ -35,4 +36,112 @@ body:has(dialog[open]) {
 
 .technologies img {
   @apply w-10 sepia opacity-50 hover:opacity-100 hover:sepia-0  transition-all cursor-cell relative;
+}
+
+.techstack i {
+  @apply absolute text-3xl opacity-15 transition-all;
+
+  transform: translate(-50%, -50%) rotate(0deg) translate(0) rotate(0deg);
+  animation-fill-mode: forwards;
+  animation-duration: 500ms;
+  z-index: -100;
+}
+
+.techstack i:nth-child(1) {
+  animation-name: ts1;
+  animation-delay: 1000ms;
+}
+@keyframes ts1 {
+  to {
+    transform: translate(-50%, -50%) rotate(-10deg)
+      translate(calc(var(--spacing) * -31), 0) rotate(-90deg);
+  }
+}
+
+.techstack i:nth-child(2) {
+  animation-name: ts2;
+  animation-delay: 1100ms;
+}
+@keyframes ts2 {
+  to {
+    transform: translate(-50%, -50%) rotate(15deg)
+      translate(calc(var(--spacing) * -31), 0) rotate(-90deg);
+  }
+}
+
+.techstack i:nth-child(3) {
+  animation-name: ts3;
+  animation-delay: 1200ms;
+}
+@keyframes ts3 {
+  to {
+    transform: translate(-50%, -50%) rotate(40deg)
+      translate(calc(var(--spacing) * -31), 0) rotate(-90deg);
+  }
+}
+
+.techstack i:nth-child(4) {
+  animation-name: ts4;
+  animation-delay: 1300ms;
+}
+@keyframes ts4 {
+  to {
+    transform: translate(-50%, -50%) rotate(65deg)
+      translate(calc(var(--spacing) * -31), 0) rotate(-90deg);
+  }
+}
+
+.techstack i:nth-child(5) {
+  animation-name: ts5;
+  animation-delay: 1400ms;
+}
+@keyframes ts5 {
+  to {
+    transform: translate(-50%, -50%) rotate(90deg)
+      translate(calc(var(--spacing) * -31), 0) rotate(-90deg);
+  }
+}
+
+.techstack i:nth-child(6) {
+  animation-name: ts6;
+  animation-delay: 1500ms;
+}
+@keyframes ts6 {
+  to {
+    transform: translate(-50%, -50%) rotate(115deg)
+      translate(calc(var(--spacing) * -31), 0) rotate(-90deg);
+  }
+}
+
+.techstack i:nth-child(7) {
+  animation-name: ts7;
+  animation-delay: 1600ms;
+}
+@keyframes ts7 {
+  to {
+    transform: translate(-50%, -50%) rotate(140deg)
+      translate(calc(var(--spacing) * -31), 0) rotate(-90deg);
+  }
+}
+
+.techstack i:nth-child(8) {
+  animation-name: ts8;
+  animation-delay: 1700ms;
+}
+@keyframes ts8 {
+  to {
+    transform: translate(-50%, -50%) rotate(165deg)
+      translate(calc(var(--spacing) * -31), 0) rotate(-90deg);
+  }
+}
+
+.techstack i:nth-child(9) {
+  animation-name: ts9;
+  animation-delay: 1800ms;
+}
+@keyframes ts9 {
+  to {
+    transform: translate(-50%, -50%) rotate(190deg)
+      translate(calc(var(--spacing) * -31), 0) rotate(-90deg);
+  }
 }

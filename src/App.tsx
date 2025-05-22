@@ -25,7 +25,22 @@ function App() {
           <hr className="my-10 w-1/2 border-(--lightgray)" />
 
           <div className="flex flex-col justify-center items-center">
-            <img src={avatar} className="w-50 rounded-full"></img>
+            <div className="relative">
+              <img src={avatar} className="w-50 rounded-full"></img>
+              <div className="absolute top-1/2 left-1/2">
+                <div className="relative techstack">
+                  <i className="devicon-angular-plain"></i>
+                  <i className="devicon-kotlin-plain"></i>
+                  <i className="devicon-nodejs-plain-wordmark"></i>
+                  <i className="devicon-react-original"></i>
+                  <i className="devicon-rust-original"></i>
+                  <i className="devicon-csharp-plain"></i>
+                  <i className="devicon-cplusplus-plain"></i>
+                  <i className="devicon-c-plain"></i>
+                  <i className="devicon-python-plain"></i>
+                </div>
+              </div>
+            </div>
             <h1
               className="m-4 text-(--darkgray)"
               style={{
