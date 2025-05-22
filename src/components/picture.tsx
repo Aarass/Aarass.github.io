@@ -3,11 +3,13 @@ import closeIcon from "../assets/close.svg";
 
 export function FullscreenablePicture({
   src,
-  className,
+  imgClassName,
+  wrapperClassName,
   portrait,
 }: {
   src: string;
-  className: string;
+  imgClassName: string;
+  wrapperClassName: string;
   portrait: boolean;
 }) {
   const imgRef = useRef<HTMLImageElement>(null);
@@ -43,34 +45,42 @@ export function FullscreenablePicture({
 
   return (
     <>
-      <img src={src} className={"cursor-pointer " + className} ref={imgRef} />
-      <div className="relative">
-        <dialog
-          ref={dialogRef}
-          className="max-w-screen max-h-lvh w-full h-dvh lg:p-10 bg-transparent"
-        >
-          <div className="absolute top-1/2 left-1/2 -translate-1/2 flex items-center justify-center">
-            <div className="relative">
-              <img
-                src={src}
-                className={
-                  portrait
-                    ? "max-w-[unset] w-[90vw] sm:w-[unset] sm:h-[90svh]" // 2xl:h-[unset] 2xl:w-[90dvw]"
-                    : "max-w-[unset] w-[90vw] 2xl:w-[unset] 2xl:h-[90dvh]"
-                }
-              />
+      <div className={wrapperClassName}>
+        <img
+          src={src}
+          className={"cursor-pointer " + imgClassName}
+          ref={imgRef}
+        />
+        <div className="relative">
+          <dialog
+            ref={dialogRef}
+            className="max-w-screen max-h-lvh w-full h-dvh lg:p-10 bg-transparent"
+          >
+            <div className="absolute top-1/2 left-1/2 -translate-1/2 flex items-center justify-center">
+              <div className="relative overflow-hidden">
+                <img
+                  src={src}
+                  className={
+                    portrait
+                      ? "max-w-[unset] w-[90vw] sm:w-[unset] sm:h-[90svh]"
+                      : "max-w-[unset] w-[90vw] 2xl:w-[unset] 2xl:h-[90dvh]"
+                  }
+                />
 
-              <button
-                className="absolute top-0 right-0 rounded-full p-2 ml-auto cursor-pointer"
-                onClick={() => {
-                  dialogRef.current?.close();
-                }}
-              >
-                <img src={closeIcon} className="w-6 aspect-square" />
-              </button>
+                <div className="absolute top-0 right-0 bg-white rounded-bl-4xl pl-1.5 pb-1.5">
+                  <button
+                    className="rounded-full p-2 ml-auto cursor-pointer"
+                    onClick={() => {
+                      dialogRef.current?.close();
+                    }}
+                  >
+                    <img src={closeIcon} className="w-6 aspect-square" />
+                  </button>
+                </div>
+              </div>
             </div>
-          </div>
-        </dialog>
+          </dialog>
+        </div>
       </div>
     </>
   );

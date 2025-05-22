@@ -11,8 +11,12 @@ export function RmasDetails() {
   return (
     <div className="font-[Source_Code_Pro] text-(--darkgray)">
       <h1 className="text-6xl text-center font-light mb-5">SeekOut</h1>
-
-      <img src={banner} className="w-full rounded-2xl my-2"></img>
+      <FullscreenablePicture
+        src={banner}
+        portrait={false}
+        imgClassName="w-full rounded-2xl my-2"
+        wrapperClassName=""
+      />
 
       <p className=" text-sm my-4">
         SeekOut is a university project — a crowdmapping mobile app designed to
@@ -44,18 +48,19 @@ export function RmasDetails() {
 
         <FullscreenablePicture
           src={leaderboard}
-          className="rounded-2xl mx-auto shadow-sm w-[178px] h-[357px]"
+          imgClassName="rounded-2xl shadow-sm w-[178px] h-[357px]"
+          wrapperClassName="mx-auto"
           portrait={true}
         />
       </section>
 
-      <section className="flex flex-wrap justify-center my-4 technologies">
+      <section className="flex flex-wrap justify-center my-4 technologies gap-1">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kotlin/kotlin-original.svg" />
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/android/android-plain-wordmark.svg" />
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/androidstudio/androidstudio-original.svg" />
       </section>
 
-      <RepositoryButton href="https://github.com/Aarass/rmas" />
+      <RepositoryButton href="https://github.com/Aarass/Can-t-live-without-electricity" />
     </div>
   );
 }

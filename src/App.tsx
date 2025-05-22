@@ -206,10 +206,7 @@ function DisplaySection({
   return (
     <section className="mb-20 flex flex-col items-center">
       <div className="text-(--darkgray) ">
-        <p className="font-light text-xl">{heading}</p>
-        <div>
-          <hr className="mb-5 mt-2 w-1/8 border-(--lightgray)" />
-        </div>
+        <p className="font-light text-xl mb-8">{heading}</p>
         <div className="grid grid-cols-1 md:grid-cols-2 auto-cols-min gap-4 w-[fit-content] ">
           {children}
         </div>
