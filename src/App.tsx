@@ -21,6 +21,8 @@ import { RmasDetails } from "./details/rmas.tsx";
 import { RwaDetails } from "./details/rwa.tsx";
 
 function App() {
+  let timestamp = 0;
+  const elemRef = useRef<HTMLDivElement>(null);
   return (
     <>
       <header className="">
@@ -28,19 +30,51 @@ function App() {
           <hr className="my-10 w-1/2 border-(--lightgray)" />
 
           <div className="flex flex-col justify-center items-center">
-            <div className="relative">
-              <img src={avatar} className="w-50 rounded-full"></img>
+            <div className="relative techstack-wrapper">
+              <img
+                src={avatar}
+                className="w-50 rounded-full"
+                onMouseEnter={(e) => {
+                  e.preventDefault;
+                  const element = elemRef.current;
+                  if (element === null) return;
+                  element.classList.remove("techstack-anim");
+                  void element.offsetWidth;
+                  element.classList.add("techstack-anim");
+                  element.classList.add("reverse");
+
+                  timestamp = Date.now();
+                }}
+                onMouseLeave={(e) => {
+                  e.preventDefault;
+
+                  setTimeout(
+                    () => {
+                      const element = elemRef.current;
+                      if (element === null) return;
+                      element.classList.remove("reverse");
+                      element.classList.remove("techstack-anim");
+                      void element.offsetWidth;
+                      element.classList.add("techstack-anim");
+                    },
+                    timestamp + 1000 - Date.now(),
+                  );
+                }}
+              ></img>
               <div className="absolute top-1/2 left-1/2">
-                <div className="relative techstack">
-                  <i className="devicon-angular-plain"></i>
-                  <i className="devicon-kotlin-plain"></i>
-                  <i className="devicon-nodejs-plain-wordmark"></i>
-                  <i className="devicon-react-original"></i>
+                <div
+                  className="relative techstack techstack-anim"
+                  ref={elemRef}
+                >
                   <i className="devicon-rust-original"></i>
                   <i className="devicon-csharp-plain"></i>
+                  <i className="devicon-nodejs-plain-wordmark"></i>
+                  <i className="devicon-angular-plain"></i>
+                  <i className="devicon-typescript-plain"></i>
+                  <i className="devicon-react-original"></i>
+                  <i className="devicon-kotlin-plain"></i>
                   <i className="devicon-cplusplus-plain"></i>
                   <i className="devicon-c-plain"></i>
-                  <i className="devicon-python-plain"></i>
                 </div>
               </div>
             </div>
