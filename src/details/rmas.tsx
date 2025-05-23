@@ -34,8 +34,11 @@ export function RmasDetails() {
         <iframe
           width="178"
           height="357"
-          allow="fullscreen;"
-          src="https://www.youtube.com/embed/-4hIVowPUM8"
+          src="https://www.youtube.com/embed/-4hIVowPUM8?si=-4okMhU0Fb270pOt"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
           className="rounded-2xl mx-auto shadow-sm"
         ></iframe>
       </section>
