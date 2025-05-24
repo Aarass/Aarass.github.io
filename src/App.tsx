@@ -14,11 +14,13 @@ import avatar from "./assets/images/avatar.jpg";
 import clweImage from "./assets/images/clwe/cat.jpg";
 import rmasImage from "./assets/images/rmas/banner.jpg";
 import rwaImage from "./assets/images/rwa/banner.png";
+import easifyImage from "./assets/images/easify/banner.jpg";
 import locationIcon from "./assets/location.svg";
 import phoneIcon from "./assets/phone.svg";
 import { ClweDetails } from "./details/clwe.tsx";
 import { RmasDetails } from "./details/rmas.tsx";
 import { RwaDetails } from "./details/rwa.tsx";
+import { EasifyDetails } from "./details/easify.tsx";
 
 function App() {
   let timestamp = 0;
@@ -72,9 +74,9 @@ function App() {
                   <i className="devicon-angular-plain"></i>
                   <i className="devicon-typescript-plain"></i>
                   <i className="devicon-react-original"></i>
+                  <i className="devicon-docker-plain"></i>
                   <i className="devicon-kotlin-plain"></i>
                   <i className="devicon-cplusplus-plain"></i>
-                  <i className="devicon-c-plain"></i>
                 </div>
               </div>
             </div>
@@ -139,15 +141,20 @@ function App() {
       </div>
 
       <DisplaySection heading="💎 My Finest Work">
+        <ProjectDisplay src={clweImage} name="Can't live without electricity">
+          <ClweDetails />
+        </ProjectDisplay>
+
         <ProjectDisplay src={rwaImage} name="SquadUp">
           <RwaDetails />
         </ProjectDisplay>
+
         <ProjectDisplay src={rmasImage} name="SeekOut">
           <RmasDetails />
         </ProjectDisplay>
 
-        <ProjectDisplay src={clweImage} name="Can't live without electricity">
-          <ClweDetails />
+        <ProjectDisplay src={easifyImage} name="EasifyNis">
+          <EasifyDetails />
         </ProjectDisplay>
       </DisplaySection>
 
