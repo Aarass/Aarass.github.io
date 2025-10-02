@@ -214,7 +214,7 @@ function ProjectDisplay({
   src: string;
   name: string;
 }) {
-  const cardRef = useRef<HTMLImageElement>(null);
+  const cardRef = useRef<HTMLButtonElement>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -226,7 +226,11 @@ function ProjectDisplay({
     if (dialog === null) return;
 
     const handler = () => {
-      dialogRef.current?.showModal();
+      const dialog = dialogRef.current;
+      if (dialog) {
+        dialog.showModal();
+        // (dialog.querySelector('.overflow-scroll') as HTMLDivElement | null)?.focus();
+      }
       closeButtonRef.current?.blur();
     };
 
@@ -249,13 +253,10 @@ function ProjectDisplay({
 
   return (
     <div>
-      <div
-        ref={cardRef}
-        className="p-3 shadow-sm rounded-2xl cursor-pointer hover:scale-105 transition-all"
-      >
+      <button ref={cardRef} className="p-3 shadow-sm rounded-2xl cursor-pointer hover:scale-105 transition-all">
         <img src={src} className="w-2xs rounded-md" />
         <h1 className="font-light text-sm text-center mt-2">{name}</h1>
-      </div>
+      </button>
 
       <div className="relative">
         <dialog
