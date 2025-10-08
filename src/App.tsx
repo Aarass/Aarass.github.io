@@ -11,6 +11,7 @@ import emailIcon from "./assets/email.svg";
 import emaildarkIcon from "./assets/emaildark.svg";
 import githubIcon from "./assets/github.svg";
 import avatar from "./assets/images/avatar.jpg";
+import under_c from "./assets/images/under_construction.png";
 import clweImage from "./assets/images/clwe/cat.jpg";
 import rmasImage from "./assets/images/rmas/banner.jpg";
 import rwaImage from "./assets/images/rwa/banner.png";
@@ -162,7 +163,21 @@ function App() {
       </DisplaySection>
 
       <DisplaySection heading="🚧 Under Construction">
-        <ProjectDisplay src={clweImage} name="Can't live without electricity">
+        <ProjectDisplay
+          src={clweImage}
+          name="Can't live without electricity"
+          taped={true}
+        >
+          <div>
+            <p>2</p>
+          </div>
+        </ProjectDisplay>
+
+        <ProjectDisplay
+          src={rwaImage}
+          name="Can't live without electricity"
+          taped={true}
+        >
           <div>
             <p>2</p>
           </div>
@@ -213,9 +228,11 @@ function ProjectDisplay({
   src,
   name,
   children,
+  taped = false,
 }: PropsWithChildren & {
   src: string;
   name: string;
+  taped?: boolean;
 }) {
   const cardRef = useRef<HTMLButtonElement>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -260,7 +277,13 @@ function ProjectDisplay({
         ref={cardRef}
         className="p-3 shadow-sm rounded-2xl cursor-pointer hover:scale-105 transition-all"
       >
-        <img src={src} className="w-2xs rounded-md" />
+        {taped ? (
+          <Taped>
+            <img src={src} className="w-2xs rounded-md" />
+          </Taped>
+        ) : (
+          <img src={src} className="w-2xs rounded-md" />
+        )}
         <h1 className="font-light text-sm text-center mt-2">{name}</h1>
       </button>
 
@@ -284,6 +307,27 @@ function ProjectDisplay({
             <div className="flex-1 overflow-scroll dialog-bg">{children}</div>
           </div>
         </dialog>
+      </div>
+    </div>
+  );
+}
+
+function Taped({ children }: PropsWithChildren) {
+  return (
+    <div className="relative">
+      <>{children}</>
+      <div className="absolute inset-0 overflow-hidden [&>*]:absolute">
+        <img
+          src={under_c}
+          className="left-[-100px] top-[40px] rotate-[70deg]"
+        />
+        <img
+          src={under_c}
+          className="right-[-100px] top-[15px] rotate-[20deg]"
+        />
+        <img src={under_c} className="right-[-100px] top-[15px] rotate-45" />
+        <img src={under_c} className="left-[-100px] bottom-0 rotate-45" />
+        <img src={under_c} className="right-[-100px] bottom-0 -rotate-12" />
       </div>
     </div>
   );
