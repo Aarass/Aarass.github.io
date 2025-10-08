@@ -115,7 +115,7 @@ function App() {
             </p>
             <div className="flex justify-center items-center mt-5">
               <IconButton src={githubIcon} href="https://github.com/Aarass" />
-              <IconButton src={cvIcon} href="mailto:prokopovic75@gmail.com" />
+              <IconButton src={cvIcon} href="cv.pdf" />
               <IconButton
                 src={emailIcon}
                 href="mailto:prokopovic75@gmail.com"
