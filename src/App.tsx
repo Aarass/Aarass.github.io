@@ -126,20 +126,23 @@ function App() {
       </header>
 
       <div className="mx-auto w-8 mb-10">
-        <img
-          src={arrowIcon}
-          className="animate-pulse"
-          style={{ animationDelay: "0ms" }}
-        ></img>
-        <img
-          src={arrowIcon}
-          className="animate-pulse -translate-y-3"
-          style={{
-            animationDelay: "500ms",
-          }}
-        ></img>
+        <a href="#start">
+          <img
+            src={arrowIcon}
+            className="animate-pulse"
+            style={{ animationDelay: "0ms" }}
+          ></img>
+          <img
+            src={arrowIcon}
+            className="animate-pulse -translate-y-3"
+            style={{
+              animationDelay: "500ms",
+            }}
+          ></img>
+        </a>
       </div>
 
+      <div id="start"></div>
       <DisplaySection heading="💎 My Finest Work">
         <ProjectDisplay src={clweImage} name="Can't live without electricity">
           <ClweDetails />
@@ -253,7 +256,10 @@ function ProjectDisplay({
 
   return (
     <div>
-      <button ref={cardRef} className="p-3 shadow-sm rounded-2xl cursor-pointer hover:scale-105 transition-all">
+      <button
+        ref={cardRef}
+        className="p-3 shadow-sm rounded-2xl cursor-pointer hover:scale-105 transition-all"
+      >
         <img src={src} className="w-2xs rounded-md" />
         <h1 className="font-light text-sm text-center mt-2">{name}</h1>
       </button>
